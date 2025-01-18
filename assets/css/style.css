@@ -730,11 +730,12 @@ main {
 
 .clients-list {
   display: flex;
-  justify-content: flex-start;
+  flex: 0 0 20%;
+  justify-content: space-between;
   align-items: flex-start;
-  gap: 15px;
+  gap: 5px;
   margin: 0 -15px;
-  padding: 25px;
+  padding: 0 15px;
   padding-bottom: 25px;
   overflow-x: auto;
   scroll-behavior: smooth;
@@ -744,12 +745,12 @@ main {
 }
 
 .clients-item {
-  min-width: 50%;
+  min-width: 20%;
   scroll-snap-align: start;
 }
 
 .clients-item img {
-  width: 100%;
+  width: 50%;
   filter: grayscale(1);
   transition: var(--transition-1);
 }
