@@ -1,5 +1,41 @@
 'use strict';
 
+// Preloader
+window.addEventListener('load', () => {
+  const preloader = document.querySelector('.preloader');
+  const messages = document.querySelectorAll('.welcome-message');
+  
+  // Sequence animations
+  setTimeout(() => {
+    messages.forEach(msg => msg.style.animation = 'fadeOut 0.5s forwards');
+    preloader.classList.add('fade-out');
+  }, 3000); // Total preloader duration 3 seconds
+
+  setTimeout(() => {
+    preloader.style.display = 'none';
+  }, 3500);
+});
+
+// Scroll Animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in-view');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('[data-scroll]').forEach((section) => {
+  section.style.opacity = '0';
+  section.style.transform = 'translateY(20px)';
+  section.style.transition = 'all 0.6s ease-out';
+  observer.observe(section);
+});
 
 
 // element toggle function
